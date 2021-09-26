@@ -14,6 +14,17 @@ class UserRepository {
     `, [name, email, password]);
     return row;
   };
+
+  async update(id, { name, email, password }) {
+    const [rows] = await db.query(`
+        UPDATE users
+        SET name = $1, email = $2, password = $3
+        WHERE id = $4
+        RETURNING *
+    `, [name, email, password, id]);
+
+    return rows;
+  };
 };
 
 module.exports = new UserRepository();
