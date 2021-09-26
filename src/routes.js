@@ -7,5 +7,6 @@ const routes = Router();
 routes.get('/users/list', UserController.index);
 routes.post('/user/register', UserController.store);
 routes.put('/user/edit/:id', UserController.update);
+routes.delete('/user/delete/:id', UserController.delete);
 
 module.exports = routes;

@@ -38,6 +38,14 @@ class UserController {
 
     response.json(user);
   };
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await UserRepository.delete(id);
+
+    response.sendStatus(204);
+  };
 };
 
 module.exports = new UserController();
