@@ -8,3 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS topics (
+    id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+    name VARCHAR NOT NULL
+);
