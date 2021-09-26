@@ -1,6 +1,11 @@
 const UserRepository = require('../repositories/user-repository');
 
 class UserController {
+  async index(request, response) {
+    const users = await UserRepository.findAll();
+    response.json(users);
+  }
+
   async store(request, response) {
     const { name, email, password } = request.body;
 
