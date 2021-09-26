@@ -4,7 +4,7 @@ class UserController {
   async index(request, response) {
     const users = await UserRepository.findAll();
     response.json(users);
-  }
+  };
 
   async store(request, response) {
     const { name, email, password } = request.body;
@@ -14,6 +14,23 @@ class UserController {
     };
 
     const user = await UserRepository.create({
+      name,
+      email,
+      password,
+    });
+
+    response.json(user);
+  };
+
+  async update(request, response) {
+    const { id } = request.params;
+    const { name, email, password } = request.body;
+
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required' });
+    };
+
+    const user = await UserRepository.update(id, {
       name,
       email,
       password,
