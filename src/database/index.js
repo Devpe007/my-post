@@ -8,4 +8,9 @@ const client = new Client({
   database: 'myposts',
 });
 
-module.exports = client;
+client.connect();
+
+exports.query = async (query) => {
+  const { rows } = await client.query(query);
+  return rows;
+};
