@@ -1,6 +1,11 @@
 const TopicRespository = require('../repositories/topic-respository');
 
 class TopicController {
+  async index(request, response) {
+    const topics = await TopicRespository.findAll();
+    response.json(topics);
+  };
+
   async store(request, response) {
     const { name } = request.body;
     if (!name) {

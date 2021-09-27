@@ -12,6 +12,7 @@ routes.post('/user/register', UserController.store);
 routes.put('/user/edit/:id', UserController.update);
 routes.delete('/user/delete/:id', UserController.delete);
 
+routes.get('/topics/list', TopicController.index);
 routes.post('/topic/create', TopicController.store);
 
 module.exports = routes;
