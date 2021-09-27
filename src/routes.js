@@ -13,6 +13,7 @@ routes.put('/user/edit/:id', UserController.update);
 routes.delete('/user/delete/:id', UserController.delete);
 
 routes.get('/topics/list', TopicController.index);
+routes.get('/topic/:id', TopicController.show);
 routes.post('/topic/create', TopicController.store);
 routes.delete('/topic/delete/:id', TopicController.delete);
 

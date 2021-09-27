@@ -6,6 +6,17 @@ class TopicController {
     response.json(topics);
   };
 
+  async show(request, response) {
+    const { id } = request.params;
+
+    const topic = await TopicRespository.findById(id);
+    if (!topic) {
+      return response.status(404).json('Topic not found');
+    };
+
+    response.json(topic);
+  };
+
   async store(request, response) {
     const { name } = request.body;
     if (!name) {
