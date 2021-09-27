@@ -1,8 +1,8 @@
 const { Router } = require('express');
 
 const UserController = require('./app/controllers/user-controller');
-
 const TopicController = require('./app/controllers/topic-controller');
+const PublicationController = require('./app/controllers/publication-controller');
 
 const routes = Router();
 
@@ -16,5 +16,7 @@ routes.get('/topics/list', TopicController.index);
 routes.get('/topic/:id', TopicController.show);
 routes.post('/topic/create', TopicController.store);
 routes.delete('/topic/delete/:id', TopicController.delete);
+
+routes.post('/publication/create', PublicationController.store);
 
 module.exports = routes;
