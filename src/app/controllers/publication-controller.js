@@ -1,6 +1,11 @@
 const PublicationRespository = require('../repositories/publication-repository');
 
 class PublicationController {
+  async index(request, response) {
+    const publications = await PublicationRespository.findAll();
+    response.json(publications);
+  };
+
   async store(request, response) {
     const { sender, text, topic } = request.body;
 

@@ -17,6 +17,7 @@ routes.get('/topic/:id', TopicController.show);
 routes.post('/topic/create', TopicController.store);
 routes.delete('/topic/delete/:id', TopicController.delete);
 
+routes.get('/publications/feed', PublicationController.index);
 routes.post('/publication/create', PublicationController.store);
 
 module.exports = routes;
