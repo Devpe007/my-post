@@ -14,5 +14,6 @@ routes.delete('/user/delete/:id', UserController.delete);
 
 routes.get('/topics/list', TopicController.index);
 routes.post('/topic/create', TopicController.store);
+routes.delete('/topic/delete/:id', TopicController.delete);
 
 module.exports = routes;

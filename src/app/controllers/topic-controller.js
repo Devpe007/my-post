@@ -18,6 +18,14 @@ class TopicController {
 
     response.json(topic);
   };
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await TopicRespository.delete(id);
+
+    response.sendStatus(204);
+  };
 };
 
 module.exports = new TopicController();
