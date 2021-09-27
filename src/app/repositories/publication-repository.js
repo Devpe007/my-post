@@ -2,7 +2,12 @@ const db = require('../../database');
 
 class PublicationRespository {
   async findAll() {
-    const row = await db.query('SELECT * FROM publications');
+    const rows = await db.query('SELECT * FROM publications');
+    return rows;
+  };
+
+  async findById(id) {
+    const row = await db.query('SELECT * FROM publications WHERE id = $1', [id]);
     return row;
   };
 
