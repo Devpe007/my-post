@@ -15,6 +15,17 @@ class PublicationRespository {
 
     return row;
   };
+
+  async update(id, { text, topic }) {
+    const rows = await db.query(`
+        UPDATE publications
+        SET text = $1, topic = $2
+        WHERE id = $3
+        RETURNING *
+    `, [text, topic, id]);
+
+    return rows;
+  };
 };
 
 module.exports = new PublicationRespository();
