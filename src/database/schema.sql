@@ -22,12 +22,3 @@ CREATE TABLE IF NOT EXISTS publications (
     FOREIGN KEY(sender) REFERENCES users(id),
     FOREIGN KEY(topic) REFERENCES topics(id)
 );
-
-CREATE TABLE IF NOT EXISTS coments (
-    id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    publication UUID,
-    sender UUID,
-    text VARCHAR,
-    FOREIGN KEY(sender) REFERENCES users(id),
-    FOREIGN KEY(publication) REFERENCES publications(id)
-);
