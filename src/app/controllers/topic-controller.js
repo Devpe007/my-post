@@ -33,6 +33,11 @@ class TopicController {
   async delete(request, response) {
     const { id } = request.params;
 
+    const topic = await TopicRespository.findById(id);
+    if (!topic) {
+      return response.status(404).json({ error: 'Topic not found' });
+    };
+
     await TopicRespository.delete(id);
 
     response.sendStatus(204);
