@@ -6,6 +6,17 @@ class PublicationController {
     response.json(publications);
   };
 
+  async show(request, response) {
+    const { id } = request.params;
+
+    const publication = await PublicationRespository.findById(id);
+    if (!publication) {
+      return response.status(404).json({ error: 'Publication not found' });
+    };
+
+    response.json(publication);
+  };
+
   async store(request, response) {
     const { sender, text, topic } = request.body;
 

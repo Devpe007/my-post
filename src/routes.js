@@ -18,6 +18,7 @@ routes.post('/topic/create', TopicController.store);
 routes.delete('/topic/delete/:id', TopicController.delete);
 
 routes.get('/publications/feed', PublicationController.index);
+routes.get('/publication/:id', PublicationController.show);
 routes.post('/publication/create', PublicationController.store);
 routes.put('/publication/edit/:id', PublicationController.update);
 
