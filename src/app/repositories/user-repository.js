@@ -11,6 +11,11 @@ class UserRepository {
     return row;
   };
 
+  async findByEmail(email) {
+    const row = await db.query('SELECT * FROM user WHERE id = $1', [email]);
+    return row;
+  };
+
   async create({ name, email, password }) {
     const row = await db.query(`
         INSERT INTO users(name, email, password)
