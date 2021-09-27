@@ -15,6 +15,6 @@ module.exports = {
     'no-extra-semi': 'off',
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
-
+    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
   },
 };
