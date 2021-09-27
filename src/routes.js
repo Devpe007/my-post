@@ -21,5 +21,6 @@ routes.get('/publications/feed', PublicationController.index);
 routes.get('/publication/:id', PublicationController.show);
 routes.post('/publication/create', PublicationController.store);
 routes.put('/publication/edit/:id', PublicationController.update);
+routes.delete('/publication/delete/:id', PublicationController.delete);
 
 module.exports = routes;

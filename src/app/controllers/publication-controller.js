@@ -56,6 +56,19 @@ class PublicationController {
 
     response.json(publication);
   };
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    const publication = await PublicationRespository.findById(id);
+    if (!publication) {
+      return response.status(404).json({ message: 'Publication not found' });
+    };
+
+    await PublicationRespository.delete(id);
+
+    response.sendStatus(204);
+  };
 };
 
 module.exports = new PublicationController();
