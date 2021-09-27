@@ -6,6 +6,11 @@ class TopicRespository {
     return rows;
   };
 
+  async findById(id) {
+    const row = await db.query('SELECT * FROM topics WHERE id = $1', [id]);
+    return row;
+  };
+
   async create({ name }) {
     const [row] = await db.query(`
         INSERT INTO topics(name)
