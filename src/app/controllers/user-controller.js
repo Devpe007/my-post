@@ -24,6 +24,11 @@ class UserController {
       return response.status(400).json({ error: 'Name is required' });
     };
 
+    const users = await UserRepository.findByEmail(email);
+    if (users) {
+      return response.status(400).json({ error: 'This e-mail is already in use' });
+    };
+
     const user = await UserRepository.create({
       name,
       email,
@@ -37,8 +42,18 @@ class UserController {
     const { id } = request.params;
     const { name, email, password } = request.body;
 
+    const userExists = await UserRepository.findById(id);
+    if (userExists) {
+      return response.status(404).json({ error: 'User not found' });
+    };
+
     if (!name) {
       return response.status(400).json({ error: 'Name is required' });
+    };
+
+    const userByEmail = await UserRepository.findByEmail(email);
+    if (userByEmail && userByEmail.id !== id) {
+      return response.status(400).json({ error: 'This e-mail is already in use' });
     };
 
     const user = await UserRepository.update(id, {
@@ -52,6 +67,11 @@ class UserController {
 
   async delete(request, response) {
     const { id } = request.params;
+
+    const user = await UserRepository.findById(id);
+    if (!user) {
+      return response.status(404).json({ error: 'User not found' });
+    };
 
     await UserRepository.delete(id);
 
