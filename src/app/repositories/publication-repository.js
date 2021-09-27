@@ -31,6 +31,11 @@ class PublicationRespository {
 
     return rows;
   };
+
+  async delete(id) {
+    const deleteOp = await db.query('DELETE FROM publications WHERE id = $1', [id]);
+    return deleteOp;
+  }
 };
 
 module.exports = new PublicationRespository();
